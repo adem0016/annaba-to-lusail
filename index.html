@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Annaba to Lusail — International Student Story</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#e8e0d0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Georgia,serif;}
+  :root{--navy:#1a3a5c;--gold:#b8922a;--gold-l:#d4a843;--cream:#faf7f2;--paper:#f4f0e8;--ink:#2c3e50;--bg:#c9a84c;}
+
+  .wrap{display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem 2.5rem;}
+  .bwrap{position:relative;width:100%;max-width:680px;}
+
+  .book{width:100%;background:var(--paper);border-radius:4px 14px 14px 4px;border:0.5px solid var(--bg);box-shadow:-4px 0 0 #8a6e20,-9px 0 0 #6b5418,0 8px 32px rgba(0,0,0,0.18);min-height:600px;position:relative;overflow:hidden;}
+  .spine{position:absolute;left:0;top:0;bottom:0;width:22px;background:linear-gradient(to right,var(--navy),#254d7a,var(--navy));z-index:10;}
+  .sdots{position:absolute;left:0;top:0;bottom:0;width:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;z-index:11;}
+  .sd{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;}
+  .lines{position:absolute;inset:0;background-image:repeating-linear-gradient(transparent,transparent 34px,rgba(180,146,42,.07) 34px,rgba(180,146,42,.07) 35px);pointer-events:none;}
+
+  /* PAGES */
+  .page{display:none;padding:2.5rem 2.75rem 2.75rem 3rem;min-height:600px;position:relative;flex-direction:column;animation:fadeIn .25s ease;}
+  .page.on{display:flex;}
+  @keyframes fadeIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+  .pc{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;margin-top:2rem;}
+  .sl{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:.45rem;font-family:Arial,sans-serif;}
+  .pt{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:1.1rem;line-height:1.35;border-bottom:1.5px solid var(--gold);padding-bottom:.65rem;}
+  .pb{font-size:15px;line-height:1.9;color:var(--ink);flex:1;}
+  .pb p{margin-bottom:1rem;}
+  .dropcap::first-letter{font-size:3.2em;font-weight:700;float:left;line-height:.72;margin:.08em .1em 0 0;color:var(--navy);}
+  .slot{width:100%;background:rgba(26,58,92,.04);border:1.5px dashed rgba(184,146,42,.4);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);font-size:12px;font-family:Arial,sans-serif;gap:6px;margin-bottom:1.1rem;}
+  .slot i{font-size:30px;opacity:.5;}
+  .slot span{color:rgba(26,58,92,.4);font-style:italic;font-size:11px;}
+  .slot img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block;}
+  .pn{position:absolute;bottom:1.1rem;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(26,58,92,.3);font-family:Arial,sans-serif;z-index:2;}
+  .lub{position:absolute;top:1.1rem;left:2.75rem;display:flex;align-items:center;gap:7px;z-index:3;}
+  .luc{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--navy);background:var(--cream);font-family:Arial,sans-serif;}
+  .lut{font-size:9px;letter-spacing:.09em;color:var(--gold);font-family:Arial,sans-serif;text-transform:uppercase;}
+
+  /* COVER */
+  .cover{display:none;min-height:600px;background:linear-gradient(160deg,#1a3a5c 0%,#0f2640 100%);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 3rem 3rem 3.5rem;position:relative;overflow:hidden;}
+  .cover.on{display:flex;}
+  .cover::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(184,146,42,.08),transparent 55%),radial-gradient(circle at 80% 80%,rgba(184,146,42,.06),transparent 55%);pointer-events:none;}
+  .cc{position:absolute;width:90px;height:90px;border-color:rgba(184,146,42,.3);border-style:solid;}
+  .cc.tl{top:1.75rem;left:2.5rem;border-width:1px 0 0 1px;}
+  .cc.tr{top:1.75rem;right:1.75rem;border-width:1px 1px 0 0;}
+  .cc.bl{bottom:1.75rem;left:2.5rem;border-width:0 0 1px 1px;}
+  .cc.br{bottom:1.75rem;right:1.75rem;border-width:0 1px 1px 0;}
+  .logo-ring{width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.06);border:2px solid rgba(184,146,42,.45);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;position:relative;z-index:2;overflow:hidden;}
+  .logo-ring img{width:94px;height:94px;border-radius:50%;object-fit:contain;mix-blend-mode:screen;}
+  .logo-fallback{text-align:center;}
+  .logo-lu{font-size:24px;font-weight:700;color:var(--gold-l);font-family:Georgia,serif;line-height:1;}
+  .logo-sub{font-size:8px;letter-spacing:.12em;color:rgba(184,146,42,.65);font-family:Arial,sans-serif;text-transform:uppercase;margin-top:4px;}
+  .ctag{font-size:10px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;font-family:Arial,sans-serif;position:relative;z-index:2;}
+  .ctitle{font-size:28px;font-weight:700;color:#faf7f2;line-height:1.4;margin-bottom:.5rem;position:relative;z-index:2;}
+  .cdiv{width:55px;height:1.5px;background:var(--gold);margin:1rem auto;position:relative;z-index:2;}
+  .csub{font-size:13px;color:rgba(184,146,42,.8);font-family:Arial,sans-serif;position:relative;z-index:2;line-height:1.7;}
+  .cslot{width:160px;height:80px;background:rgba(184,146,42,.06);border:1px dashed rgba(184,146,42,.3);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(184,146,42,.45);font-size:10px;gap:5px;margin:.9rem auto 0;font-family:Arial,sans-serif;position:relative;z-index:2;overflow:hidden;}
+  .cslot i{font-size:24px;}
+  .cslot img{width:100%;height:100%;object-fit:cover;border-radius:7px;}
+
+  /* NAV */
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0 0;width:100%;max-width:680px;}
+  .nbtn{background:var(--navy);border:none;border-radius:9px;padding:9px 22px;font-size:13px;color:var(--gold-l);cursor:pointer;font-family:Arial,sans-serif;display:flex;align-items:center;gap:7px;letter-spacing:.04em;transition:background .15s;}
+  .nbtn:hover{background:#254d7a;}
+  .nbtn:disabled{opacity:.22;cursor:default;}
+  .plbl{font-size:12px;color:var(--navy);font-family:Arial,sans-serif;text-align:center;font-weight:600;}
+  .dots{display:flex;gap:6px;justify-content:center;margin-top:6px;flex-wrap:wrap;}
+  .dot{width:7px;height:7px;border-radius:50%;background:rgba(26,58,92,.15);cursor:pointer;transition:background .15s;}
+  .dot.on{background:var(--navy);}
+
+  /* IMAGE UPLOAD UI */
+  .upload-hint{font-size:10px;color:rgba(26,58,92,.35);font-family:Arial,sans-serif;text-align:center;margin-top:.3rem;font-style:italic;}
+
+  @media(max-width:600px){
+    .book{min-height:520px;}
+    .cover,.page{min-height:520px;padding:2rem 1.75rem 2.25rem 2.25rem;}
+    .ctitle{font-size:22px;}
+    .pt{font-size:17px;}
+    .pb{font-size:14px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="bwrap">
+    <div class="book" id="bk">
+      <div class="spine"></div>
+      <div class="sdots"><div class="sd"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div></div>
+
+      <!-- COVER -->
+      <div class="cover on" id="p0">
+        <div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div>
+        <div class="logo-ring">
+          <img src="lu_logo.png" alt="Lusail University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div class="logo-fallback" style="display:none"><div class="logo-lu">LU</div><div class="logo-sub">Lusail Univ.</div></div>
+        </div>
+        <p class="ctag">Lusail University · Qatar · 2026</p>
+        <h1 class="ctitle">From Annaba<br>to Lusail</h1>
+        <div class="cdiv"></div>
+        <p class="csub">International Student Story Competition<br>An Algerian student's journey to Qatar</p>
+        <div class="cslot" id="img-cover">
+          <img src="photos/cover.jpg" alt="Personal photo" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-user-circle\'></i><span>Your photo here</span>'">
+        </div>
+      </div>
+
+      <!-- PAGE 1 -->
+      <div class="page" id="p1">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter I</p>
+          <h2 class="pt">A Life Before Leaving</h2>
+          <div class="slot" style="height:140px;">
+            <img src="photos/annaba.jpg" alt="Annaba" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-photo\'></i><span>Photo of Annaba — the bay, the corniche, or a school street</span>'">
+          </div>
+          <div class="pb">
+            <p class="dropcap">School in Algeria is serious business. From the earliest years, there is an understanding — unspoken but present in every classroom — that education is the primary path forward.</p>
+            <p>I grew up inside that system, in Annaba, in the northeast of the country. Annaba is not a small city — it has history, industry, a university of its own, a port that has been active for centuries.</p>
+          </div>
+        </div>
+        <span class="pn">1</span>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="page" id="p2">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter I — continued</p>
+          <h2 class="pt">A Life Before Leaving</h2>
+          <div class="pb">
+            <p>My school years were shaped by the Algerian curriculum — dense, demanding, and weighted heavily toward mathematics and the sciences. The baccalaureate loomed over the final years of lycée the way a storm looms on the horizon: you could see it coming long before it arrived, and everything in the meantime was preparation.</p>
+            <p>What the Algerian school system gave me — and I say this without irony — was discipline. The ability to sit with difficult material until it became familiar. The habit of working when motivation is absent. A baseline respect for rigour that I would later come to appreciate fully only when I encountered environments where it was also expected of me.</p>
+          </div>
+          <div class="slot" style="height:120px;margin-top:auto;">
+            <img src="photos/school.jpg" alt="School years" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-school\'></i><span>A photo from your school years or lycée days</span>'">
+          </div>
+        </div>
+        <span class="pn">2</span>
+      </div>
+
+      <!-- PAGE 3 -->
+      <div class="page" id="p3">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter II</p>
+          <h2 class="pt">The Departure</h2>
+          <div class="slot" style="height:140px;">
+            <img src="photos/departure.jpg" alt="Departure" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-plane-departure\'></i><span>Airport photo or a farewell moment</span>'">
+          </div>
+          <div class="pb">
+            <p class="dropcap">There is a particular kind of silence that fills a home the night before someone leaves it for a long time. In Annaba, that silence is thick with sea air and the distant sound of the Mediterranean.</p>
+            <p>I was nineteen years old, and in a few hours I would be on a plane to Qatar. Leaving felt like two things at once: pride and difficulty, wrapped so tightly around each other that I could not tell where one ended and the other began. My father shook my hand at the airport the way he does when he means something more than words allow.</p>
+          </div>
+        </div>
+        <span class="pn">3</span>
+      </div>
+
+      <!-- PAGE 4 -->
+      <div class="page" id="p4">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter III</p>
+          <h2 class="pt">Arriving in Doha</h2>
+          <div class="pb">
+            <p class="dropcap">The first thing Doha does is overwhelm you with scale. Coming from Annaba — a city of warmth and history, of narrow streets and colonial architecture leaning into the sea — the skyline of Doha reads almost like a statement.</p>
+            <p>Glass towers rising out of flat desert. Highways wide enough to feel like declarations. Everything new, everything deliberate. The heat pressed against me like something physical. I remember thinking: this place does not accommodate. You adjust to it.</p>
+          </div>
+          <div class="slot" style="height:145px;margin-top:auto;">
+            <img src="photos/doha.jpg" alt="Doha" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-building-skyscraper\'></i><span>Doha skyline or Lusail University campus</span>'">
+          </div>
+        </div>
+        <span class="pn">4</span>
+      </div>
+
+      <!-- PAGE 5 -->
+      <div class="page" id="p5">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter IV</p>
+          <h2 class="pt">The Academic Journey</h2>
+          <div class="slot" style="height:130px;">
+            <img src="photos/campus.jpg" alt="Campus" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-books\'></i><span>Campus photo — inside a lecture hall or library</span>'">
+          </div>
+          <div class="pb">
+            <p class="dropcap">Supply Chain Management is not a subject that announces itself dramatically. But it is deeply practical, and I had chosen it precisely for that reason — to understand how things move across complex systems. In Qatar, a country that imports the vast majority of what it consumes, that question felt immediately relevant.</p>
+            <p>My classmates came from across the world — from Asia, Africa, the Middle East, Europe. Working alongside people with genuinely different educational backgrounds taught me things no textbook covers.</p>
+          </div>
+        </div>
+        <span class="pn">5</span>
+      </div>
+
+      <!-- PAGE 6 -->
+      <div class="page" id="p6">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter V</p>
+          <h2 class="pt">Living Between Two Worlds</h2>
+          <div class="pb">
+            <p class="dropcap">At some point during the first semester, I stopped counting the days. Not because I had stopped missing home, but because the missing had become something I carried rather than something that stopped me. Annaba remained vivid — the sound of the port, the smell of the medina in summer, the particular quality of light over the bay in the late afternoon.</p>
+            <p>Being Algerian in Qatar places you in a particular position. You are Arab, but differently Arab. I found myself explaining Algeria constantly, and in doing so, understanding it more clearly than I had when I lived inside it.</p>
+          </div>
+          <div class="slot" style="height:130px;margin-top:auto;">
+            <img src="photos/twoworlds.jpg" alt="Two worlds" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-map-2\'></i><span>Two photos side by side — Annaba &amp; Doha</span>'">
+          </div>
+        </div>
+        <span class="pn">6</span>
+      </div>
+
+      <!-- PAGE 7 -->
+      <div class="page" id="p7">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter VI</p>
+          <h2 class="pt">What Qatar Taught Me</h2>
+          <div class="slot" style="height:130px;">
+            <img src="photos/qatar.jpg" alt="Qatar" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-building\'></i><span>Lusail University exterior or a Qatar landmark</span>'">
+          </div>
+          <div class="pb">
+            <p class="dropcap">Qatar is a country that has made a conscious decision about what it wants to become. That ambition is visible in its infrastructure, its institutions, and the deliberate investment in education that brought universities like Lusail into existence.</p>
+            <p>I arrived from a country with enormous potential and significant friction. In Qatar, I saw what it looks like when systems are prioritised. It did not make me disillusioned with home. It made me more interested in it.</p>
+          </div>
+        </div>
+        <span class="pn">7</span>
+      </div>
+
+      <!-- PAGE 8 -->
+      <div class="page" id="p8">
+        <div class="lines"></div>
+        <div class="lub"><div class="luc">LU</div><span class="lut">Lusail University</span></div>
+        <div class="pc">
+          <p class="sl">Chapter VII</p>
+          <h2 class="pt">Looking Forward</h2>
+          <div class="pb">
+            <p class="dropcap">I am still studying. Still adjusting. Still learning, semester by semester, what it means to build a life across two places at once. There are days in Doha when I miss the sea in Annaba so much it is almost physical. There are days back home when I feel the pull of everything I left in Qatar.</p>
+            <p>I left Annaba at nineteen to study Supply Chain Management at Lusail University. What I did not expect was that the most important supply chain I would study would be the one connecting who I was to who I am becoming — each link formed by a flight, a semester, a conversation, a challenge met or failed and tried again.</p>
+            <p>That chain is still being built. I am still in the middle of it.</p>
+          </div>
+          <div class="slot" style="height:110px;margin-top:auto;">
+            <img src="photos/closing.jpg" alt="Closing photo" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-user-circle\'></i><span>Your personal photo — closing image</span>'">
+          </div>
+        </div>
+        <span class="pn">8</span>
+      </div>
+
+    </div><!-- /book -->
+  </div><!-- /bwrap -->
+
+  <div class="nav">
+    <button class="nbtn" id="bp" onclick="go(-1)" disabled>
+      <i class="ti ti-arrow-left"></i> Prev
+    </button>
+    <div style="text-align:center;">
+      <div class="plbl" id="lbl">Cover</div>
+      <div class="dots" id="dts"></div>
+    </div>
+    <button class="nbtn" id="bn" onclick="go(1)">
+      Next <i class="ti ti-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  const N=9,cur=[0];
+  const lbs=['Cover','Ch. I — A Life Before Leaving','Ch. I — continued','Ch. II — The Departure','Ch. III — Arriving in Doha','Ch. IV — The Academic Journey','Ch. V — Between Two Worlds','Ch. VI — What Qatar Taught Me','Ch. VII — Looking Forward'];
+  const dts=document.getElementById('dts');
+  for(let i=0;i<N;i++){
+    const d=document.createElement('div');
+    d.className='dot'+(i===0?' on':'');
+    d.onclick=()=>gt(i);
+    dts.appendChild(d);
+  }
+  function gt(n){
+    document.getElementById('p'+cur[0]).classList.remove('on');
+    dts.children[cur[0]].classList.remove('on');
+    cur[0]=n;
+    document.getElementById('p'+n).classList.add('on');
+    dts.children[n].classList.add('on');
+    document.getElementById('lbl').textContent=lbs[n];
+    document.getElementById('bp').disabled=n===0;
+    document.getElementById('bn').disabled=n===N-1;
+  }
+  function go(d){gt(Math.max(0,Math.min(N-1,cur[0]+d)));}
+
+  // Keyboard navigation
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(-1);
+  });
+</script>
+</body>
+</html>
