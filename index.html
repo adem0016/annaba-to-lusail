@@ -13,33 +13,39 @@
   .wrap{display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem 2.5rem;}
   .bwrap{position:relative;width:100%;max-width:680px;}
 
-  .book{width:100%;background:var(--paper);border-radius:4px 14px 14px 4px;border:0.5px solid var(--bg);box-shadow:-4px 0 0 #8a6e20,-9px 0 0 #6b5418,0 8px 32px rgba(0,0,0,0.18);min-height:600px;position:relative;overflow:hidden;}
+  .book{width:100%;height:620px;background:var(--paper);border-radius:4px 14px 14px 4px;border:0.5px solid var(--bg);box-shadow:-4px 0 0 #8a6e20,-9px 0 0 #6b5418,0 8px 32px rgba(0,0,0,0.18);position:relative;overflow:hidden;}
   .spine{position:absolute;left:0;top:0;bottom:0;width:22px;background:linear-gradient(to right,var(--navy),#254d7a,var(--navy));z-index:10;}
   .sdots{position:absolute;left:0;top:0;bottom:0;width:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;z-index:11;}
   .sd{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;}
   .lines{position:absolute;inset:0;background-image:repeating-linear-gradient(transparent,transparent 34px,rgba(180,146,42,.07) 34px,rgba(180,146,42,.07) 35px);pointer-events:none;}
 
   /* PAGES */
-  .page{display:none;padding:2.5rem 2.75rem 2.75rem 3rem;min-height:600px;position:relative;flex-direction:column;animation:fadeIn .25s ease;}
+  .page{display:none;height:620px;padding:2.5rem 2.75rem 2.75rem 3rem;position:relative;flex-direction:column;animation:fadeIn .25s ease;overflow:hidden;}
   .page.on{display:flex;}
   @keyframes fadeIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
-  .pc{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;margin-top:2rem;}
-  .sl{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:.45rem;font-family:Arial,sans-serif;}
-  .pt{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:1.1rem;line-height:1.35;border-bottom:1.5px solid var(--gold);padding-bottom:.65rem;}
-  .pb{font-size:15px;line-height:1.9;color:var(--ink);flex:1;}
-  .pb p{margin-bottom:1rem;}
-  .dropcap::first-letter{font-size:3.2em;font-weight:700;float:left;line-height:.72;margin:.08em .1em 0 0;color:var(--navy);}
-  .slot{width:100%;background:rgba(26,58,92,.04);border:1.5px dashed rgba(184,146,42,.4);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);font-size:12px;font-family:Arial,sans-serif;gap:6px;margin-bottom:1.1rem;}
-  .slot i{font-size:30px;opacity:.5;}
-  .slot span{color:rgba(26,58,92,.4);font-style:italic;font-size:11px;}
+  .pc{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;margin-top:2rem;overflow:hidden;}
+  .sl{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:.45rem;font-family:Arial,sans-serif;flex-shrink:0;}
+  .pt{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:.9rem;line-height:1.35;border-bottom:1.5px solid var(--gold);padding-bottom:.55rem;flex-shrink:0;}
+  .pb{font-size:13.5px;line-height:1.85;color:var(--ink);overflow-y:auto;flex:1;}
+  .pb p{margin-bottom:.85rem;}
+  .pb p:last-child{margin-bottom:0;}
+  .dropcap::first-letter{font-size:3em;font-weight:700;float:left;line-height:.72;margin:.08em .1em 0 0;color:var(--navy);}
+
+  /* IMAGE SLOT — floated portrait */
+  .slot{float:right;width:42%;margin:0 0 .7rem .9rem;background:rgba(26,58,92,.04);border:1.5px dashed rgba(184,146,42,.4);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);font-size:11px;font-family:Arial,sans-serif;gap:5px;overflow:hidden;}
+  .slot i{font-size:26px;opacity:.5;}
+  .slot span{color:rgba(26,58,92,.4);font-style:italic;font-size:10px;text-align:center;padding:0 6px;}
   .slot img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block;}
+  .slot.tall{height:200px;}
+  .slot.mid{height:170px;}
+
   .pn{position:absolute;bottom:1.1rem;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(26,58,92,.3);font-family:Arial,sans-serif;z-index:2;}
   .lub{position:absolute;top:1.1rem;left:2.75rem;display:flex;align-items:center;gap:7px;z-index:3;}
   .luc{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--navy);background:var(--cream);font-family:Arial,sans-serif;}
   .lut{font-size:9px;letter-spacing:.09em;color:var(--gold);font-family:Arial,sans-serif;text-transform:uppercase;}
 
   /* COVER */
-  .cover{display:none;min-height:600px;background:linear-gradient(160deg,#1a3a5c 0%,#0f2640 100%);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 3rem 3rem 3.5rem;position:relative;overflow:hidden;}
+  .cover{display:none;height:620px;background:linear-gradient(160deg,#1a3a5c 0%,#0f2640 100%);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 3rem 3rem 3.5rem;position:relative;overflow:hidden;}
   .cover.on{display:flex;}
   .cover::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(184,146,42,.08),transparent 55%),radial-gradient(circle at 80% 80%,rgba(184,146,42,.06),transparent 55%);pointer-events:none;}
   .cc{position:absolute;width:90px;height:90px;border-color:rgba(184,146,42,.3);border-style:solid;}
@@ -56,7 +62,7 @@
   .ctitle{font-size:28px;font-weight:700;color:#faf7f2;line-height:1.4;margin-bottom:.5rem;position:relative;z-index:2;}
   .cdiv{width:55px;height:1.5px;background:var(--gold);margin:1rem auto;position:relative;z-index:2;}
   .csub{font-size:13px;color:rgba(184,146,42,.8);font-family:Arial,sans-serif;position:relative;z-index:2;line-height:1.7;}
-  .cslot{width:160px;height:80px;background:rgba(184,146,42,.06);border:1px dashed rgba(184,146,42,.3);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(184,146,42,.45);font-size:10px;gap:5px;margin:.9rem auto 0;font-family:Arial,sans-serif;position:relative;z-index:2;overflow:hidden;}
+  .cslot{width:160px;height:100px;background:rgba(184,146,42,.06);border:1px dashed rgba(184,146,42,.3);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(184,146,42,.45);font-size:10px;gap:5px;margin:.9rem auto 0;font-family:Arial,sans-serif;position:relative;z-index:2;overflow:hidden;}
   .cslot i{font-size:24px;}
   .cslot img{width:100%;height:100%;object-fit:cover;border-radius:7px;}
 
@@ -70,15 +76,13 @@
   .dot{width:7px;height:7px;border-radius:50%;background:rgba(26,58,92,.15);cursor:pointer;transition:background .15s;}
   .dot.on{background:var(--navy);}
 
-  /* IMAGE UPLOAD UI */
-  .upload-hint{font-size:10px;color:rgba(26,58,92,.35);font-family:Arial,sans-serif;text-align:center;margin-top:.3rem;font-style:italic;}
-
   @media(max-width:600px){
-    .book{min-height:520px;}
-    .cover,.page{min-height:520px;padding:2rem 1.75rem 2.25rem 2.25rem;}
+    .book,.cover,.page{height:520px;}
+    .page{padding:2rem 1.75rem 2.25rem 2.25rem;}
     .ctitle{font-size:22px;}
-    .pt{font-size:17px;}
-    .pb{font-size:14px;}
+    .pt{font-size:16px;}
+    .pb{font-size:13px;}
+    .slot{width:38%;}
   }
 </style>
 </head>
@@ -113,12 +117,12 @@
         <div class="pc">
           <p class="sl">Chapter I</p>
           <h2 class="pt">A Life Before Leaving</h2>
-          <div class="slot" style="height:130px;">
-            <img src="photos/annaba.jpg" alt="Annaba" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-photo\'></i><span>Annaba bay, corniche, or city view</span>'">
-          </div>
           <div class="pb">
-            <p class="dropcap">School in Algeria is serious business. From the earliest years, there is an understanding — unspoken but present in every classroom — that education is the primary path forward. It is not a background condition of childhood. It is the foreground.</p>
-            <p>I grew up inside that system, in Annaba, in the northeast of the country. Annaba is not a small city — it has history, industry, a university, a port active for centuries. But it is also a city where the ceiling of ambition can feel defined by what is immediately visible.</p>
+            <div class="slot tall">
+              <img src="photos/annaba.jpg" alt="Annaba" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-photo\'></i><span>Annaba bay or corniche</span>'">
+            </div>
+            <p class="dropcap">School in Algeria is serious business. From the earliest years, there is an understanding — unspoken but present in every classroom — that education is the primary path forward. It is not a background condition of childhood. It is the foreground. Parents remind you of it. Teachers reinforce it. The national exams carry a weight that shapes entire years of a student's life.</p>
+            <p>I grew up inside that system, in Annaba, in the northeast of the country. Annaba is not a small city — it has history, industry, a university, a port active for centuries. But it is also a city where the ceiling of ambition can feel defined by what is immediately visible: the same institutions your parents attended, the same career paths, the familiar geography of possibility.</p>
           </div>
         </div>
         <span class="pn">1</span>
@@ -132,11 +136,11 @@
           <p class="sl">Chapter I — continued</p>
           <h2 class="pt">A Life Before Leaving</h2>
           <div class="pb">
+            <div class="slot tall">
+              <img src="photos/school.jpg" alt="School years" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-school\'></i><span>School or lycée years</span>'">
+            </div>
             <p>My school years were shaped by the Algerian curriculum — dense, demanding, weighted heavily toward mathematics and the sciences. The baccalaureate loomed over the final years of high school the way a storm looms on the horizon: visible long before it arrives, and everything in the meantime is preparation. I studied seriously not because I had no other interests, but because I understood early that results were the only currency that opened doors.</p>
             <p>What the Algerian school system gave me was discipline. The ability to sit with difficult material until it became familiar. The habit of working when motivation is absent. A respect for rigour I would only fully appreciate when I encountered environments where it was also expected of me. At the time it felt like the texture of life. In retrospect, it was preparation for something I did not yet know was coming.</p>
-          </div>
-          <div class="slot" style="height:110px;margin-top:auto;">
-            <img src="photos/school.jpg" alt="School years" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-school\'></i><span>A photo from your school or lycée years</span>'">
           </div>
         </div>
         <span class="pn">2</span>
@@ -149,12 +153,13 @@
         <div class="pc">
           <p class="sl">Chapter II</p>
           <h2 class="pt">The City That Built Me</h2>
-          <div class="slot" style="height:130px;">
-            <img src="photos/annaba_city.jpg" alt="Annaba city" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-map-pin\'></i><span>Annaba streets, ruins of Hippo Regius, or the sea</span>'">
-          </div>
           <div class="pb">
-            <p class="dropcap">Before I talk about leaving, I need to talk about what I was leaving. Annaba sits at the northeastern edge of Algeria, where the land curves toward the sea and the afternoon light turns everything golden. The ruins of Hippo Regius lie at its edge. The sea wraps around it on two sides.</p>
-            <p>When you grow up in a place like that, you do not think of it as a city. You think of it as the world. It is only when you leave that you understand it was both smaller and more precious than you ever gave it credit for. I did not know, the last time I walked its corniche before my flight, that I was saying goodbye.</p>
+            <div class="slot tall">
+              <img src="photos/annaba_city.jpg" alt="Annaba city" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-map-pin\'></i><span>Annaba streets or the sea</span>'">
+            </div>
+            <p class="dropcap">Before I talk about leaving, I need to talk about what I was leaving. Annaba sits at the northeastern edge of Algeria, where the land curves toward the sea and the afternoon light turns everything golden. It is a city of contradictions — ancient and industrial, loud and intimate, proud and restless. The ruins of Hippo Regius lie at its edge. The sea wraps around it on two sides. In summer, the air smells of salt and jasmine and something that has no name but every person from Annaba would recognise immediately.</p>
+            <p>I grew up in its streets and rhythms. My friends were there. My family was there. Everything I had ever known was contained within its geography. When you grow up in a place like that, you do not think of it as a city. You think of it as the world. It is only when you leave that you understand it was both smaller and more precious than you ever gave it credit for.</p>
+            <p>I did not know, the last time I walked its corniche before my flight, that I was saying goodbye. I thought I was just going for a walk.</p>
           </div>
         </div>
         <span class="pn">3</span>
@@ -167,12 +172,14 @@
         <div class="pc">
           <p class="sl">Chapter III</p>
           <h2 class="pt">The Departure</h2>
-          <div class="slot" style="height:130px;">
-            <img src="photos/departure.jpg" alt="Departure" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-plane-departure\'></i><span>Airport farewell or the night before leaving</span>'">
-          </div>
           <div class="pb">
-            <p class="dropcap">There is a particular kind of silence that fills a home the night before someone leaves it for a long time. In Annaba, that silence is thick with sea air and the distant sound of the Mediterranean. I remember it clearly — my bags already packed, my mother insisting there was still time to eat something.</p>
-            <p>My father shook my hand at the airport. Not a hug — a handshake that said <em>I am proud of you</em> and <em>please be careful</em> and <em>I will miss you</em> all at once. My mother said "take care of yourself" — and in Arabic, that is not a pleasantry. It is a prayer. I walked through the gate and did not look back.</p>
+            <div class="slot tall">
+              <img src="photos/departure.jpg" alt="Departure" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-plane-departure\'></i><span>Airport farewell</span>'">
+            </div>
+            <p class="dropcap">There is a particular kind of silence that fills a home the night before someone leaves it for a long time. In Annaba, that silence is thick with sea air and the distant sound of the Mediterranean. I remember it clearly — my bags already packed, my mother insisting there was still time to eat something. I was nineteen years old. In a few hours I would be on a plane to Qatar, and nothing about that felt real yet.</p>
+            <p>None of the paperwork captures what it feels like to look around a room you have known your entire life and understand you are about to leave it. That the next time you sit here, in this light, you will be a different person returning to a familiar place. Not the same person who never left.</p>
+            <p>My father shook my hand at the airport. Not a hug — a handshake that said <em>I am proud of you</em> and <em>please be careful</em> and <em>I will miss you</em> all at once. My mother did not say goodbye. She said "take care of yourself" — and in Arabic, that is not a pleasantry. It is a prayer.</p>
+            <p>I walked through the gate and did not look back. Not because I was not afraid, but because I knew that if I turned around, I would not keep walking.</p>
           </div>
         </div>
         <span class="pn">4</span>
@@ -186,11 +193,13 @@
           <p class="sl">Chapter IV</p>
           <h2 class="pt">Arriving in Doha</h2>
           <div class="pb">
+            <div class="slot tall">
+              <img src="photos/doha.jpg" alt="Doha" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-building-skyscraper\'></i><span>Doha skyline or airport</span>'">
+            </div>
             <p class="dropcap">The first thing Doha does is overwhelm you with scale. Coming from Annaba — narrow streets, colonial architecture leaning into the sea — the skyline reads like a provocation. Glass towers rising out of flat desert. Highways wide enough to feel like declarations. Everything built to announce that something large is happening here.</p>
-            <p>The heat is different from Algerian heat. In Annaba it is coastal, softened by water. In Doha the air is dense and absolute — a wall you walk through rather than air you breathe. I had one suitcase, one carry-on, and an address I had memorised but never visited. I knew no one. For the first time I understood what it means to be completely alone in a place that does not yet know your name.</p>
-          </div>
-          <div class="slot" style="height:120px;margin-top:auto;">
-            <img src="photos/doha.jpg" alt="Doha" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-building-skyscraper\'></i><span>Doha skyline or Hamad International Airport</span>'">
+            <p>The heat is different from Algerian heat. In Annaba it is coastal, softened by water. In Doha the air is dense and absolute — a wall you walk through rather than air you breathe. This place does not accommodate. You adjust to it.</p>
+            <p>I had one suitcase, one carry-on, and an address I had memorised but never visited. I knew no one. I was nineteen years old, standing outside Hamad International Airport, and for the first time understood what it means to be completely alone in a place that does not yet know your name.</p>
+            <p>It was terrifying. It was also, in a way I could not have articulated then, the beginning of something.</p>
           </div>
         </div>
         <span class="pn">5</span>
@@ -203,12 +212,13 @@
         <div class="pc">
           <p class="sl">Chapter V</p>
           <h2 class="pt">The Academic Journey</h2>
-          <div class="slot" style="height:120px;">
-            <img src="photos/campus.jpg" alt="Campus" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-books\'></i><span>Lecture hall, library, or campus exterior</span>'">
-          </div>
           <div class="pb">
+            <div class="slot tall">
+              <img src="photos/campus.jpg" alt="Campus" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-books\'></i><span>Campus or lecture hall</span>'">
+            </div>
             <p class="dropcap">Supply Chain Management is not a subject that announces itself dramatically. But it is deeply practical, and I had chosen it for that reason — to understand how things move across complex systems. In Qatar, a country that imports the vast majority of what it consumes, that question felt immediately relevant.</p>
-            <p>Professors expected participation, not just attendance. Exams required reasoning, not just recall. My classmates came from across the world — Asia, Africa, the Middle East, Europe. Working alongside people with genuinely different backgrounds taught me things no textbook covers: how to build consensus, how to disagree productively, how to carry your share when the stakes matter to everyone involved.</p>
+            <p>The coursework was harder than I expected, not because the material was beyond me, but because the environment demanded a different kind of engagement. Professors expected participation, not just attendance. Exams required reasoning, not just recall. Courses like Microeconomics forced me to model decisions, consider trade-offs, and understand how incentives shape behaviour at every level of an economy.</p>
+            <p>Group assignments introduced another challenge entirely. My classmates came from across the world — Asia, Africa, the Middle East, Europe. Working alongside people with genuinely different backgrounds taught me things no textbook covers: how to build consensus, how to disagree productively, how to carry your share when the stakes matter to everyone involved.</p>
           </div>
         </div>
         <span class="pn">6</span>
@@ -222,11 +232,13 @@
           <p class="sl">Chapter VI</p>
           <h2 class="pt">Ramadan Away from Home</h2>
           <div class="pb">
-            <p class="dropcap">The first Ramadan I spent away from Annaba was the one that taught me what home actually means. In Algeria, Ramadan is a collective experience. The streets empty before iftar and fill again suddenly. The smell of chorba drifts from every window. You do not experience Ramadan alone — the city experiences it with you.</p>
-            <p>In Doha it is different. Ramadan is present — visible in shortened hours, lanterns, dates at reception desks — but it is not your Ramadan. The rhythms are not the ones you grew up with. The food is not your mother's. I remember sitting alone that first evening, waiting for maghrib, with a simple plate I had prepared myself. No chorba. No family. Just the call to prayer from a mosque I had not yet learned the name of, in a city still learning mine.</p>
-          </div>
-          <div class="slot" style="height:100px;margin-top:auto;">
-            <img src="photos/ramadan.jpg" alt="Ramadan" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-moon\'></i><span>Ramadan lanterns, iftar table, or evening in Doha</span>'">
+            <div class="slot tall">
+              <img src="photos/ramadan.jpg" alt="Ramadan" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-moon\'></i><span>Ramadan lanterns or iftar</span>'">
+            </div>
+            <p class="dropcap">The first Ramadan I spent away from Annaba was the one that taught me what home actually means. In Algeria, Ramadan is a collective experience. The streets empty before iftar and fill again suddenly. The smell of chorba drifts from every window. Families gather. Neighbours share food. You do not experience Ramadan alone — the city experiences it with you.</p>
+            <p>In Doha it is different. Ramadan is present — visible in shortened hours, lanterns, dates at reception desks — but it is not your Ramadan. The rhythms are not the ones you grew up with. The food is not your mother's. The voices breaking the fast around you are warm, but they are not the voices you have heard every year since childhood.</p>
+            <p>I remember sitting alone that first evening, waiting for maghrib, with a simple plate I had prepared myself. No chorba. No family. Just the call to prayer from a mosque I had not yet learned the name of, in a city still learning mine.</p>
+            <p>I ate. I was grateful. And I missed home in a way that had no bottom to it.</p>
           </div>
         </div>
         <span class="pn">7</span>
@@ -239,12 +251,13 @@
         <div class="pc">
           <p class="sl">Chapter VII</p>
           <h2 class="pt">Living Between Two Worlds</h2>
-          <div class="slot" style="height:120px;">
-            <img src="photos/twoworlds.jpg" alt="Two worlds" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-map-2\'></i><span>A photo that captures both places — Annaba &amp; Doha</span>'">
-          </div>
           <div class="pb">
-            <p class="dropcap">At some point during the first semester, I stopped counting the days. Not because I had stopped missing home, but because the missing had become something I carried rather than something that stopped me. Annaba remained vivid — the sound of the port, the smell of the medina, the quality of light over the bay.</p>
-            <p>Being Algerian in Qatar places you in a particular position. You are Arab, but differently Arab. African, but from a coast that faces Europe. Muslim, but shaped by a history most of your classmates have not shared. I found myself explaining Algeria constantly, and in doing so, understanding it more clearly than when I lived inside it. The two places did not compete. They accumulated.</p>
+            <div class="slot tall">
+              <img src="photos/twoworlds.jpg" alt="Two worlds" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-map-2\'></i><span>Annaba &amp; Doha</span>'">
+            </div>
+            <p class="dropcap">At some point during the first semester, I stopped counting the days. Not because I had stopped missing home, but because the missing had become something I carried rather than something that stopped me. Annaba remained vivid — the sound of the port, the smell of the medina, the quality of light over the bay. But Doha had become real too, in its own way.</p>
+            <p>Being Algerian in Qatar places you in a particular position. You are Arab, but differently Arab. African, but from a coast that faces Europe. Muslim, but shaped by a history most of your classmates have not shared. I found myself explaining Algeria constantly, and in doing so, understanding it more clearly than when I lived inside it.</p>
+            <p>The two places did not compete. They accumulated. Each semester added another layer — another reference point, another version of myself that could only have been built here, in this distance from home.</p>
           </div>
         </div>
         <span class="pn">8</span>
@@ -258,11 +271,13 @@
           <p class="sl">Chapter VIII</p>
           <h2 class="pt">A Call Home</h2>
           <div class="pb">
+            <div class="slot mid">
+              <img src="photos/callhome.jpg" alt="Call home" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-phone\'></i><span>A quiet personal moment</span>'">
+            </div>
             <p class="dropcap">There was one phone call I remember more than the others. It was late in my first semester, sometime in November. I had just finished a difficult week — exams, a group project that had not gone well, the exhaustion that comes from being constantly alert in a culture not entirely yours. I called home without a specific reason. Just to hear voices.</p>
-            <p>My mother answered and asked how I was eating. My father asked about my grades. My younger sibling said something in the background that made everyone laugh. The call lasted twenty minutes. Nothing important was said. When I hung up, I sat in silence for a long time. There is a specific loneliness that only exists after a good phone call home — when the voices are gone and you are suddenly aware of exactly how far away you are. I learned to sit with that feeling. But that first time, in November, in a room in Doha — it was simply heavy.</p>
-          </div>
-          <div class="slot" style="height:100px;margin-top:auto;">
-            <img src="photos/callhome.jpg" alt="Call home" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-phone\'></i><span>A personal photo — quiet moment, phone, or window view</span>'">
+            <p>My mother answered and asked how I was eating. My father asked about my grades. My younger sibling said something in the background that made everyone laugh. The call lasted twenty minutes. Nothing important was said.</p>
+            <p>When I hung up, I sat in silence for a long time. There is a specific loneliness that only exists after a good phone call home — when the voices are gone and you are suddenly aware of exactly how far away you are. Not grief. Something more precise. The knowledge that the people you love most are living their lives in full, in a place you can no longer walk to.</p>
+            <p>I learned to sit with that feeling. But that first time, in November, in a room in Doha — it was simply heavy.</p>
           </div>
         </div>
         <span class="pn">9</span>
@@ -275,12 +290,13 @@
         <div class="pc">
           <p class="sl">Chapter IX</p>
           <h2 class="pt">What Qatar Taught Me</h2>
-          <div class="slot" style="height:120px;">
-            <img src="photos/qatar.jpg" alt="Qatar" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-building\'></i><span>Lusail University exterior or a Qatar landmark</span>'">
-          </div>
           <div class="pb">
+            <div class="slot tall">
+              <img src="photos/qatar.jpg" alt="Qatar" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-building\'></i><span>Lusail University or Qatar landmark</span>'">
+            </div>
             <p class="dropcap">Qatar has made a conscious decision about what it wants to become. That ambition is visible in its infrastructure, its institutions, and the investment in education that brought universities like Lusail into existence. Living inside that project — even as a student, even temporarily — recalibrates how you think about possibility.</p>
-            <p>I arrived from a country with enormous potential and significant friction. In Qatar I saw what it looks like when systems are prioritised. It did not make me disillusioned with home. It made me more interested in it. My classmates were building careers, developing ideas, thinking seriously about the next ten years. That environment raises the baseline of what you consider acceptable effort.</p>
+            <p>I arrived from a country with enormous potential and significant friction. Algeria has resources, talent, history, and a young population. What it has not always had is systems — institutions that function predictably, infrastructure that scales, frameworks that reward effort consistently. In Qatar I saw what it looks like when those things are prioritised. It did not make me disillusioned with home. It made me more interested in it.</p>
+            <p>The standard I held myself to shifted. Not because Qatar is perfect, but because proximity to ambition is contagious. My classmates were building careers, developing ideas, thinking seriously about the next ten years. That environment raises the baseline of what you consider acceptable effort.</p>
           </div>
         </div>
         <span class="pn">10</span>
@@ -294,11 +310,12 @@
           <p class="sl">Chapter X</p>
           <h2 class="pt">Summer Return</h2>
           <div class="pb">
-            <p class="dropcap">The flight back to Annaba at the end of my first year was only two hours. It felt much shorter than the one that had brought me to Doha. I expected relief. It arrived — but mixed with something I had not anticipated: a quiet disorientation. The city was exactly as I had left it. The same streets, the same light over the bay. Everything that was supposed to feel like home felt like home.</p>
-            <p>And yet I moved through it differently. I noticed things I had never noticed — the gaps, the inefficiencies, but also the warmth and specific humanity of a place not engineered for productivity. My friends noticed before I did. <em>You seem different</em>, one of them said. He was not wrong. I was the same person. I was also not exactly the same person. Annaba had not changed. I had moved around it slightly, and the angle made everything look different.</p>
-          </div>
-          <div class="slot" style="height:100px;margin-top:auto;">
-            <img src="photos/summer.jpg" alt="Summer return" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-home\'></i><span>Back in Annaba — family, sea, or the city you returned to</span>'">
+            <div class="slot tall">
+              <img src="photos/summer.jpg" alt="Summer return" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-home\'></i><span>Back in Annaba</span>'">
+            </div>
+            <p class="dropcap">The flight back to Annaba at the end of my first year was only two hours. It felt much shorter than the one that had brought me to Doha. I expected relief. It arrived — but mixed with something I had not anticipated: a quiet disorientation. The city was exactly as I had left it. The same streets, the same light over the bay. My room was unchanged. Everything that was supposed to feel like home felt like home.</p>
+            <p>And yet I moved through it differently. I noticed things I had never noticed — the gaps, the inefficiencies, but also the warmth and specific humanity of a place not engineered for productivity. I was impatient with things I had previously accepted without question.</p>
+            <p>My friends noticed before I did. <em>You seem different</em>, one of them said. He was not wrong. I was the same person. I was also not exactly the same person. Annaba had not changed. I had moved around it slightly, and the angle made everything look different.</p>
           </div>
         </div>
         <span class="pn">11</span>
@@ -312,12 +329,13 @@
           <p class="sl">Chapter XI</p>
           <h2 class="pt">Looking Forward</h2>
           <div class="pb">
+            <div class="slot mid">
+              <img src="photos/closing.jpg" alt="Closing photo" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-user-circle\'></i><span>Your personal closing photo</span>'">
+            </div>
             <p class="dropcap">I am still studying. Still adjusting. Still learning what it means to build a life across two places at once. There are days in Doha when I miss the sea in Annaba so much it is almost physical. There are days back home when I feel the pull of everything I left in Qatar — the pace, the exposure, the sense that something larger is possible.</p>
-            <p>The journey does not move in one direction. It loops and doubles back. It changes you, then changes how you see where you came from, then changes you again. I left Annaba at nineteen to study Supply Chain Management at Lusail University. What I did not expect was that the most important supply chain I would study would be the one connecting who I was to who I am becoming — each link formed by a flight, a semester, a conversation, a challenge met or failed and tried again.</p>
+            <p>The journey does not move in one direction. It loops and doubles back. It changes you, then changes how you see where you came from, then changes you again. There is no arrival point. Only the next semester, the next exam, the next phone call home, the next morning in a city becoming more familiar without ever fully becoming yours.</p>
+            <p>I left Annaba at nineteen to study Supply Chain Management at Lusail University. What I did not expect was that the most important supply chain I would study would be the one connecting who I was to who I am becoming — each link formed by a flight, a semester, a conversation, a challenge met or failed and tried again.</p>
             <p>That chain is still being built. I am still in the middle of it. And for the first time, I am not afraid of how long it is.</p>
-          </div>
-          <div class="slot" style="height:90px;margin-top:auto;">
-            <img src="photos/closing.jpg" alt="Closing photo" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'ti ti-user-circle\'></i><span>Your personal closing photo</span>'">
           </div>
         </div>
         <span class="pn">12</span>
@@ -361,8 +379,6 @@
     document.getElementById('bn').disabled=n===N-1;
   }
   function go(d){gt(Math.max(0,Math.min(N-1,cur[0]+d)));}
-
-  // Keyboard navigation
   document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
     if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(-1);
