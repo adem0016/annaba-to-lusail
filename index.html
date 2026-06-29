@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>From Annaba to Lusail — International Student Story</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#e8e0d0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Georgia,serif;}
@@ -389,12 +390,45 @@
   }
   function go(d){gt(Math.max(0,Math.min(N-1,cur[0]+d)));}
   function printPDF(){
-    document.querySelectorAll('.cover,.page').forEach(p=>p.classList.add('on'));
-    window.print();
-    setTimeout(()=>{
-      document.querySelectorAll('.cover,.page').forEach(p=>p.classList.remove('on'));
+    const btn=document.querySelector('.pdf-btn');
+    btn.textContent='Generating PDF…';
+    btn.disabled=true;
+
+    // Show all pages
+    document.querySelectorAll('.cover,.page').forEach(p=>{
+      p.style.display='flex';
+      p.style.height='auto';
+      p.style.minHeight='620px';
+      p.style.overflow='visible';
+      p.style.pageBreakAfter='always';
+    });
+    document.querySelector('.book').style.height='auto';
+    document.querySelector('.book').style.overflow='visible';
+
+    const opt={
+      margin:0,
+      filename:'ADEM_AYAD_202402678.pdf',
+      image:{type:'jpeg',quality:0.95},
+      html2canvas:{scale:2,useCORS:true,logging:false},
+      jsPDF:{unit:'px',format:[680,620],orientation:'portrait'},
+      pagebreak:{mode:'css',after:'.cover,.page'}
+    };
+
+    html2pdf().set(opt).from(document.querySelector('.book')).save().then(()=>{
+      // Restore normal state
+      document.querySelectorAll('.cover,.page').forEach(p=>{
+        p.style.display='';
+        p.style.height='';
+        p.style.minHeight='';
+        p.style.overflow='';
+        p.style.pageBreakAfter='';
+      });
+      document.querySelector('.book').style.height='';
+      document.querySelector('.book').style.overflow='';
       gt(cur[0]);
-    },1000);
+      btn.innerHTML='<i class="ti ti-download"></i> Download PDF';
+      btn.disabled=false;
+    });
   }
   document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
